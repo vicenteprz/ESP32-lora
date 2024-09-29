@@ -1,0 +1,8 @@
+diagrama de hardware
+
+En el siguiente diagrama se presenta como se realizaron las conexiones fisicas para el nodo esp32 el cual va conectado con los sensores proporcionados,
+cabe mencionar que se entregaron 2 sensores de temperatura pero para esta prueba se utilizó solamente uno de ellos debido a la falta de cable para realizar
+una conexion. Todos los sensores son de la marca DFRobot por lo cual se ingresó a la wiki de DFRobot para conseguir informacion sobre la utilizacion de cada uno de los 
+sensores y su funcionamiento. se dio a entender de que para el funcionamiento correcto de los sensores es necesario alimentarlos con un voltaje de 5V. Segun los diagramas 
+de DFRobot para hacer la conexion de los sensores es bastante simple, al utilizar el cable proporcionado para la conexion JST, el cable negro va conectado hacia tierra o pin GND, 
+El cable rojo el para la alimentacion electrica por lo cual va conectado al pin 5V , despues el cable azul debe ir conectado al gpio 
