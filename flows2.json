@@ -8,170 +8,6 @@
         "env": []
     },
     {
-        "id": "e6f4863c21861d86",
-        "type": "serial-port",
-        "name": "",
-        "serialport": "/dev/ttyUSB1",
-        "serialbaud": "115200",
-        "databits": "8",
-        "parity": "none",
-        "stopbits": "1",
-        "waitfor": "",
-        "dtr": "none",
-        "rts": "none",
-        "cts": "none",
-        "dsr": "none",
-        "newline": "\\n",
-        "bin": "false",
-        "out": "char",
-        "addchar": "",
-        "responsetimeout": "10000"
-    },
-    {
-        "id": "e022f3a0c1bf2704",
-        "type": "ui_group",
-        "name": "1",
-        "tab": "b0579368cf06bd24",
-        "order": 1,
-        "disp": true,
-        "width": 14,
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "40e85e9637aff5c6",
-        "type": "sqlitedb",
-        "db": "/home/prz/Documents/ESP32-lora/sensores.db",
-        "mode": "RWC"
-    },
-    {
-        "id": "b0579368cf06bd24",
-        "type": "ui_tab",
-        "name": "Home",
-        "icon": "dashboard",
-        "disabled": false,
-        "hidden": false
-    },
-    {
-        "id": "58f225a005472cb8",
-        "type": "ui_base",
-        "theme": {
-            "name": "theme-light",
-            "lightTheme": {
-                "default": "#0094CE",
-                "baseColor": "#0094CE",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": true,
-                "reset": false
-            },
-            "darkTheme": {
-                "default": "#097479",
-                "baseColor": "#097479",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
-            },
-            "customTheme": {
-                "name": "Untitled Theme 1",
-                "default": "#4B7930",
-                "baseColor": "#4B7930",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
-            },
-            "themeState": {
-                "base-color": {
-                    "default": "#0094CE",
-                    "value": "#0094CE",
-                    "edited": false
-                },
-                "page-titlebar-backgroundColor": {
-                    "value": "#0094CE",
-                    "edited": false
-                },
-                "page-backgroundColor": {
-                    "value": "#fafafa",
-                    "edited": false
-                },
-                "page-sidebar-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-textColor": {
-                    "value": "#1bbfff",
-                    "edited": false
-                },
-                "group-borderColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "widget-textColor": {
-                    "value": "#111111",
-                    "edited": false
-                },
-                "widget-backgroundColor": {
-                    "value": "#0094ce",
-                    "edited": false
-                },
-                "widget-borderColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "base-font": {
-                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
-                }
-            },
-            "angularTheme": {
-                "primary": "indigo",
-                "accents": "blue",
-                "warn": "red",
-                "background": "grey",
-                "palette": "light"
-            }
-        },
-        "site": {
-            "name": "Node-RED Dashboard",
-            "hideToolbar": "false",
-            "allowSwipe": "false",
-            "lockMenu": "false",
-            "allowTempTheme": "true",
-            "dateFormat": "DD/MM/YYYY",
-            "sizes": {
-                "sx": 48,
-                "sy": 48,
-                "gx": 6,
-                "gy": 6,
-                "cx": 6,
-                "cy": 6,
-                "px": 0,
-                "py": 0
-            }
-        }
-    },
-    {
-        "id": "5b5a8bf5e4fc96d8",
-        "type": "ui_group",
-        "name": "2",
-        "tab": "b0579368cf06bd24",
-        "order": 2,
-        "disp": true,
-        "width": 14,
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "2ce471bef3b22074",
-        "type": "ui_group",
-        "name": "3",
-        "tab": "b0579368cf06bd24",
-        "order": 3,
-        "disp": true,
-        "width": 14,
-        "collapse": false,
-        "className": ""
-    },
-    {
         "id": "128f18dd0b9dc9f4",
         "type": "serial in",
         "z": "9b5cb31de38cc45f",
@@ -222,8 +58,7 @@
         "y": 440,
         "wires": [
             [
-                "7eca9e9eb4aed4eb",
-                "8579a38cbee55595"
+                "7eca9e9eb4aed4eb"
             ]
         ]
     },
@@ -589,19 +424,70 @@
         ]
     },
     {
-        "id": "8579a38cbee55595",
-        "type": "debug",
-        "z": "9b5cb31de38cc45f",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 740,
-        "y": 280,
-        "wires": []
+        "id": "e6f4863c21861d86",
+        "type": "serial-port",
+        "name": "",
+        "serialport": "/dev/ttyUSB1",
+        "serialbaud": "115200",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "5b5a8bf5e4fc96d8",
+        "type": "ui_group",
+        "name": "2",
+        "tab": "b0579368cf06bd24",
+        "order": 2,
+        "disp": true,
+        "width": 14,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "e022f3a0c1bf2704",
+        "type": "ui_group",
+        "name": "1",
+        "tab": "b0579368cf06bd24",
+        "order": 1,
+        "disp": true,
+        "width": 14,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "2ce471bef3b22074",
+        "type": "ui_group",
+        "name": "3",
+        "tab": "b0579368cf06bd24",
+        "order": 3,
+        "disp": true,
+        "width": 14,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "40e85e9637aff5c6",
+        "type": "sqlitedb",
+        "db": "/home/prz/Documents/ESP32-lora/sensores.db",
+        "mode": "RWC"
+    },
+    {
+        "id": "b0579368cf06bd24",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
     }
 ]

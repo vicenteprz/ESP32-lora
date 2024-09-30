@@ -6,9 +6,9 @@ void setup() {
 
 void loop() {
 float val;
-val=analogRead(2);//Read Gas value from analog 0
+val=analogRead(13);//Read Gas value from analog 0
 float voltage = val;
 Serial.println(val);//Print the value to serial port
-delay(1000);
+delay(500);
 
 }
