@@ -32,12 +32,12 @@ void OnTxTimeout(void);  // Funcion llamada si la transmision excede el tiempo
 
 // Inicializacion del sensor DHT11 para temperatura y humedad
 DFRobot_DHT11 DHT;
-#define DHT11_PIN 2      // Definicion del pin para el sensor DHT11
+#define DHT11_PIN 22      // Definicion del pin para el sensor DHT11
 
 // Definicion de pines para otros sensores
 #define moisture_pin 13  // Sensor de humedad del suelo
 #define light_pin 12     // Sensor de luz ambiental
-#define gas_pin 36       // Sensor de gas (CO2)
+#define gas_pin 2       // Sensor de gas (CO2)
 
 // Funcion para obtener el promedio de 10 lecturas analogicas de un sensor
 float obtenerPromedio(int pin) {
