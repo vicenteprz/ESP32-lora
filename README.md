@@ -3,6 +3,7 @@
   Red LoRa Con ESP32 para captura de datos climáticos para 
   actividades economicas rurales en los alrededores de Temuco
 </h1>
+
 ------
 
 Este proyecto corresponde al trabajo de titulo realizado por Vicente Pérez para la carrera de Ingeniería Civil en Informática de la Universidad Catolica de Temuco con el Profesor Guía Luis Alberto Caro.
@@ -22,7 +23,7 @@ Se hicieron 3 Demos para ESP32 que trabajan en conjunto para crear una red usand
 
 Los códigos para replicar el ambiente de Node-Red y Grafana se encuentran disponibles en carpeta raíz.
 
-[Dashboard Publico con Grafana](http://localhost:3000/public-dashboards/94c0bb087d04442fb0c60637d3966544)
+[Dashboard Público con Grafana](http://localhost:3000/public-dashboards/94c0bb087d04442fb0c60637d3966544)
 
 Adicionalmente también están guardados en carpetas códigos antiguos  correspondientes a las etapas 2, 3 y 4. 
 
