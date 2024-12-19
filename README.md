@@ -23,7 +23,7 @@ Se hicieron 3 Demos para ESP32 que trabajan en conjunto para crear una red usand
 
 Los códigos para replicar el ambiente de Node-Red y Grafana se encuentran disponibles en carpeta raíz.
 
-
+[Dashboard Publico con Grafana](http://localhost:3000/public-dashboards/94c0bb087d04442fb0c60637d3966544)
 
 Adicionalmente también están guardados en carpetas códigos antiguos  correspondientes a las etapas 2, 3 y 4. 
 
