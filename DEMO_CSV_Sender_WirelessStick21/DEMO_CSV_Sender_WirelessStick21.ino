@@ -84,7 +84,7 @@ boolean Es_Trama_OK()
 int* Get_Data_PM()
 {
     
-    static int pmValues[3];
+    static int pmValues[3]; // se busca retornar un arreglo con los 3 valores de PM
     nPM01 = nPM25 = nPM10 =  0; // Reinicia las variables de medición
     String sLine = "";  // Variable para almacenar la línea de datos en formato string
     byte nFila;
@@ -106,7 +106,10 @@ int* Get_Data_PM()
           }
          else {
             Serial.println("Error checksum");  // Si la trama no es válida, muestra un error
-            pmValues[0] = pmValues[1] = pmValues[2] = -1;
+            pmValues[0] = pmValues[1] = pmValues[2] = -1; //le asigna un valor de -1 a esta 
+            //operacion puesto que C++ no permite manejar numeros NULOS
+            // De esta manera en consulta SQL para graficar los datos se da la condicion de solo mostrar
+            //valores mayores a -1 para no graficarlos.
             return pmValues;
            }
     delay(500);
@@ -164,18 +167,16 @@ void loop() {
   if(lora_idle == true){
     int randomDelay = random(100, 2500);
     delay(3000+randomDelay);  // Espera de 1500 ms entre envios
-    int Temperature, Humidity, Light, PM01, PM25, PM10, Gas, Moisture;
-    //Temperature = Humidity = Light = PM01 = PM25 = PM10 = Gas = Moisture = -1;
-    int* Data_PMS7003= Get_Data_PM();
+    int Temperature, Humidity, Light, PM01, PM25, PM10, Gas, Moisture; // Variables donde se guardarán las mediciones
+    int* Data_PMS7003= Get_Data_PM(); //Se obtiene arreglo con los valores de los PM
     PM01 = Data_PMS7003[0]; 
     PM25 = Data_PMS7003[1]; 
     PM10 = Data_PMS7003[2];
-    //Moisture = (int)(obtenerPromedio(moisture_pin) - 0) / (2250 - 0) * 100; //obtenerPromedio(moisture_pin);  // Obtener promedio de humedad del suelo (float)(obtenerPromedio(moisture_pin); - valorSeco) / (valorMojado - valorSeco) * 100
-    Moisture = obtenerPromedio(moisture_pin);
+    Moisture = obtenerPromedio(moisture_pin); // Se obtiene valor de la humedad de la tierra
     
     // Construir el JSON sin el checksum
     sprintf(txpacket, "%d,%d,%d,%d,%d,%d,%d,%d,%d,", 
-        id_ESP32, Temperature, Humidity, Light, PM01, PM25, PM10, Gas, Moisture);
+        id_ESP32, Temperature, Humidity, Light, PM01, PM25, PM10, Gas, Moisture); // Se construye csv a ser enviado
 
     // Calcular el checksum
     int checksum = 0;
@@ -184,10 +185,6 @@ void loop() {
     }
     // Agregar el checksum al paquete
     sprintf(txpacket + strlen(txpacket), "%d", checksum);
-
-  
-
-
 
     // Imprimir los datos en la consola serial
     Serial.printf("\r\nSending packet \"%s\", length %d\r\n", txpacket, strlen(txpacket));

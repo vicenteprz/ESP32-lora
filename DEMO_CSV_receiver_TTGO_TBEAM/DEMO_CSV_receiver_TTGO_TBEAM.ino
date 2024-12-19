@@ -13,8 +13,9 @@
 #define RST 23
 #define DIO0 26
 
-int id, Temperature, Humidity, Light, PM01, PM25, PM10, Gas, Moisture, Checksum;
-                                          // Variable para el pH.
+// Variables donde se guardaran los datos obtenidos por los sensores
+int id, Temperature, Humidity, Light, PM01, PM25, PM10, Gas, Moisture, Checksum; 
+                                          
 
 const char* ssid = "iot_informatica";             // Nombre de la red Wi-Fi.
 const char* password = "dragino-dragino";         // Contraseña de la red Wi-Fi.
@@ -32,7 +33,7 @@ void setup() {
   Serial.begin(115200);                           // Inicia la comunicación en el puerto serie.
   setup_wifi();                                   // Llama a la función para conectar a Wi-Fi.
   client.setServer(mqtt_server, 1883);            // Configura el servidor MQTT.
-  client.setCallback(callback);                   // Configura la función que se llama al recibir mensajes MQTT.
+ 
   while (!Serial);                                // Espera a que la conexión Serial esté lista.
 
   Serial.println("LoRa Receiver");                // Mensaje para indicar que el receptor LoRa está listo.
@@ -63,31 +64,6 @@ void setup_wifi() {
   Serial.println(WiFi.localIP());
 }
 
-void callback(char* topic, byte* message, unsigned int length) {
-  Serial.print("Message arrived on topic: ");     // Muestra el tema (topic) del mensaje recibido.
-  Serial.print(topic);
-  Serial.print(". Message: ");
-  String messageTemp;
-
-  for (int i = 0; i < length; i++) {              // Lee el mensaje carácter por carácter.
-    Serial.print((char)message[i]);
-    messageTemp += (char)message[i];              // Almacena el mensaje en una variable temporal.
-  }
-  Serial.println();
-
-  if (String(topic) == "esp32/output") {          // Comprueba si el mensaje es para cambiar el LED.
-    Serial.print("Changing output to ");
-    if(messageTemp == "on"){                      // Si el mensaje es "on", enciende el LED.
-      Serial.println("on");
-      digitalWrite(ledPin, LOW);
-    }
-    else if(messageTemp == "off"){                // Si el mensaje es "off", apaga el LED.
-      Serial.println("off");
-      digitalWrite(ledPin, HIGH);
-    }
-  }
-}
-
 const char* mqtt_user = SECRET_USER;                  // Usuario MQTT.
 const char* mqtt_password = SECRET_PASS;              // Contraseña MQTT.
 void reconnect() {
@@ -113,12 +89,12 @@ void loop() {
 
   int packetSize = LoRa.parsePacket();            // Comprueba si llegó un paquete de datos.
   if (packetSize) {                               // Si hay un paquete de datos LoRa...
-    String csvStr;
+    String csvStr;      // Variable donde se guardará CSV recivido
 
     while (LoRa.available()) {                    // Lee los datos LoRa y los almacena como texto.
-      csvStr += (char)LoRa.read();
+      csvStr += (char)LoRa.read();                // Se construye el mensaje obtenido (CSV)
     }
-    Serial.print("Received CSV: ");
+    Serial.print("CSV: ");
     Serial.println(csvStr);
 
     // Dividir el CSV en valores individuales usando la coma como separador
@@ -149,29 +125,30 @@ void loop() {
 
     // Calcular el checksum
     char payload[80];
-     // Construir el JSON sin el checksum
+     // Construir el CSV sin el checksum de la misma manera que el transmisor
     sprintf(payload, "%d,%d,%d,%d,%d,%d,%d,%d,%d,", 
         id, Temperature, Humidity, Light, PM01, PM25, PM10, Gas, Moisture);
     Serial.println(payload);
-    int checksum = 0;
+    int checksum = 0; 
     for (int i = 0; payload[i] != '\0'; i++) {
       checksum += payload[i];                     // Suma de los valores ASCII de los caracteres
     }
 
-    if (checksum == CS_RX) {
+    if (checksum == CS_RX) { // Si el checksum es correcto ejecuta el resto del codigo
       Serial.println("Checksum Correcto");
-      int sensorValues[] = {Temperature, Humidity, Light, PM01, PM25, PM10, Gas, Moisture}; 
+      int sensorValues[] = {Temperature, Humidity, Light, PM01, PM25, PM10, Gas, Moisture};  // arreglo con valores de los sensores
+      //arreglo con los topics a los que hay que enviar los datos
       const char* mqttTopics[] = {"esp32/Temperature","esp32/Humidity","esp32/Light","esp32/PM01","esp32/PM25","esp32/PM10","esp32/Gas","esp32/Moisture"};
       
-      // Crear un documento JSON para publicar los valores
       
-
+      // Se recorre el arreglo con valores para enviar al topico correspondiente en el formato [id_nodo,valor]
       for (int i = 0; i < sizeof(sensorValues) / sizeof(sensorValues[0]); i++) {
         char buffer[30];
         snprintf(buffer, sizeof(buffer), "[%d,%d]", id, sensorValues[i]);
         client.publish(mqttTopics[i], buffer);      // Publica el JSON en el tema correspondiente.
       }
     } else {
+      // si falla el checksum no hace nada y el loop vuelve a ejecutarse
       Serial.println("Fallo en Checksum");
       Serial.println(String(checksum)+"=!"+String(CS_RX));
     }

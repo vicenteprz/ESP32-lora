@@ -41,7 +41,7 @@ DFRobot_DHT11 DHT;
 // Funcion para obtener el promedio de 10 lecturas analogicas de un sensor
 int obtenerPromedio(int pin) {
   int suma = 0;
-  for (int i = 0; i < 10; i++) {
+  for (int i = 0; i < 10; i++) { 
     int valorLectura = analogRead(pin);  // Leer valor del sensor conectado al pin
     suma += valorLectura;  // Sumar las lecturas
     delay(50);  // Espera entre lecturas para evitar lecturas rapidas consecutivas
@@ -97,15 +97,15 @@ void setup() {
 void loop() {
   // Si LoRa esta inactivo, proceder a enviar un nuevo paquete
   if(lora_idle == true){
-    int randomDelay = random(100, 2500);
+    int randomDelay = random(100, 2500); //delay random para intentar evitar que distintos nodos manden datos al mismo tiempo
     delay(3000+randomDelay);  // Espera de 1500 ms entre envios
-    int Temperature, Humidity, Light, PM01, PM25, PM10, Gas, Moisture;
+    int Temperature, Humidity, Light, PM01, PM25, PM10, Gas, Moisture; // variables donde se guardarán las mediciones
     int* promDTH11 = promedioDTH11();  // Obtener promedios de temperatura y humedad
-    Temperature = promDTH11[0];
-    Humidity = promDTH11[1];
+    Temperature = promDTH11[0]; // se guarda la temperatura promedio
+    Humidity = promDTH11[1]; // se guarda la humedad promedio
     Light = obtenerPromedio(light_pin);          // Obtener promedio de luz ambiental
     Gas = obtenerPromedio(gas_pin);            // Obtener promedio de gas (CO2)
-  // Construir el JSON sin el checksum
+  // Construir el CSV sin el checksum
     sprintf(txpacket, "%d,%d,%d,%d,%d,%d,%d,%d,%d,", 
         id_ESP32, Temperature, Humidity, Light, PM01, PM25, PM10, Gas, Moisture);
 
