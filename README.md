@@ -11,9 +11,8 @@ Este proyecto corresponde al trabajo de titulo realizado por Vicente Pérez para
 
 Se hicieron 3 Demos para ESP32 que trabajan en conjunto para crear una red usando LoRa donde los nodos Transmisores mandan datos obtenidos por sensores a un nodo Recividor el cual se encarga de mandar los datos recibidos por medio del protocolo MQTT a un servidor que está corriendo Mosquitto, Node-Red, Grafana y MariaDB . Los datos son así guardados y graficados por medio de los Dashboards. 
 
-```markdown
 ![Diagrama de interacción de sistemas](/images/IntegracionSistemas.png)
-```
+
 
 [Demo Recividor T-BEAM](DEMO_CSV_receiver_TTGO_TBEAM/DEMO_CSV_receiver_TTGO_TBEAM.ino)
 
