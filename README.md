@@ -15,15 +15,16 @@ Se hicieron 3 Demos para ESP32 que trabajan en conjunto para crear una red usand
 ![Diagrama de interacción de sistemas](/images/IntegracionSistemas.png)
 
 
-[Demo Recividor T-BEAM](DEMO_CSV_receiver_TTGO_TBEAM/DEMO_CSV_receiver_TTGO_TBEAM.ino)
+1. [Demo Recividor T-BEAM](DEMO_CSV_receiver_TTGO_TBEAM/DEMO_CSV_receiver_TTGO_TBEAM.ino)
 
-[Demo Transmisor WifiLoraV2](DEMO_CSV_Sender_WifiLoRaV2/DEMO_CSV_Sender_WifiLoRaV2.ino)
+2. [Demo Transmisor WifiLoraV2](DEMO_CSV_Sender_WifiLoRaV2/DEMO_CSV_Sender_WifiLoRaV2.ino)
 
-[Demo Transmisor Wireless Stick 2.1](DEMO_CSV_Sender_WirelessStick21/DEMO_CSV_Sender_WirelessStick21.ino)
+3. [Demo Transmisor Wireless Stick 2.1](DEMO_CSV_Sender_WirelessStick21/DEMO_CSV_Sender_WirelessStick21.ino)
 
 Los códigos para replicar el ambiente de Node-Red y Grafana se encuentran disponibles en carpeta raíz.
 
-[Dashboard Público con Grafana](http://localhost:3000/public-dashboards/94c0bb087d04442fb0c60637d3966544)
+
+Se puede ver : [Dashboard Público con Grafana](http://localhost:3000/public-dashboards/94c0bb087d04442fb0c60637d3966544)
 
 Adicionalmente también están guardados en carpetas códigos antiguos  correspondientes a las etapas 2, 3 y 4. 
 
